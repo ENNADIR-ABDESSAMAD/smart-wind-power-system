@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Smart Wind Power — Administration</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}"/>
+</head>
+<body>
+<header>
+    <h1>Smart Wind Power — Back Office</h1>
+    <p th:text="'Total lectures : ' + ${totalCount}">Total lectures : 0</p>
+</header>
+
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Appareil</th>
+            <th>Tension (V)</th>
+            <th>Temp (°C)</th>
+            <th>Humidité (%)</th>
+            <th>Relais</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${readings}">
+            <td th:text="${r.id}">1</td>
+            <td th:text="${r.deviceId}">device</td>
+            <td th:text="${#numbers.formatDecimal(r.voltage, 1, 2)}">12.0</td>
+            <td th:text="${r.temperature != null ? #numbers.formatDecimal(r.temperature, 1, 1) : '—'}">25</td>
+            <td th:text="${r.humidity != null ? #numbers.formatDecimal(r.humidity, 1, 0) : '—'}">60</td>
+            <td th:text="${r.relayOn ? 'ON' : 'OFF'}">OFF</td>
+            <td th:text="${#temporals.format(r.recordedAt, 'dd/MM/yyyy HH:mm:ss')}">date</td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(readings)}">
+            <td colspan="7">Aucune donnée capteur pour le moment.</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

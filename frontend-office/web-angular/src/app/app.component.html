@@ -1,0 +1,53 @@
+<div class="layout">
+  <header>
+    <h1>Smart Wind Power</h1>
+    <p>Tableau de bord utilisateur — Front Office</p>
+  </header>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <section class="cards" *ngIf="latest">
+    <article class="card">
+      <h2>Tension</h2>
+      <p class="value">{{ latest.voltage | number:'1.1-2' }} <span>V</span></p>
+    </article>
+    <article class="card">
+      <h2>Température</h2>
+      <p class="value">{{ latest.temperature ?? '—' }} <span>°C</span></p>
+    </article>
+    <article class="card">
+      <h2>Humidité</h2>
+      <p class="value">{{ latest.humidity ?? '—' }} <span>%</span></p>
+    </article>
+    <article class="card">
+      <h2>Charge LED</h2>
+      <p class="value" [class.on]="latest.relay_on">{{ latest.relay_on ? 'ON' : 'OFF' }}</p>
+    </article>
+  </section>
+
+  <section class="history">
+    <h2>Historique récent</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Appareil</th>
+          <th>Tension</th>
+          <th>Temp</th>
+          <th>Humidité</th>
+          <th>Relais</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of history">
+          <td>{{ row.device_id }}</td>
+          <td>{{ row.voltage | number:'1.1-2' }} V</td>
+          <td>{{ row.temperature ?? '—' }}</td>
+          <td>{{ row.humidity ?? '—' }}</td>
+          <td>{{ row.relay_on ? 'ON' : 'OFF' }}</td>
+          <td>{{ row.recorded_at | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

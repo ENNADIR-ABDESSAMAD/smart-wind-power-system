@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.tools/
+.pub-cache/
+.dart_tool/
+.packages
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Java / Spring
+backend-admin-spring/target/
+backend-admin-spring/.mvn/wrapper/maven-wrapper.jar
+
+# Flutter
+frontend-office/mobile-flutter/.flutter-plugins
+frontend-office/mobile-flutter/.flutter-plugins-dependencies
+
+# Angular
+frontend-office/web-angular/.angular/
+
+# Database
+*.db
+*.sqlite
+
+# Firmware build artifacts
+firmware/**/*.hex
+firmware/**/*.elf
