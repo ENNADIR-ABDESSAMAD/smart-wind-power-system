@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 .tools/
+
+# Local overrides (DB passwords, etc.)
+**/application-local.properties
 .pub-cache/
 .dart_tool/
 .packages
